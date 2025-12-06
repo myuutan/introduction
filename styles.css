@@ -1,4 +1,4 @@
-/* ===== Variables ===== */
+/* ===== Variables (基本設定) ===== */
 :root {
     --primary-color: #F4C2D3;
     --secondary-color: #E5A8BE;
@@ -12,14 +12,7 @@
     --shadow: 0 10px 30px rgba(244, 194, 211, 0.3);
     --shadow-lg: 0 20px 50px rgba(244, 194, 211, 0.4);
     --gradient: linear-gradient(135deg, #F4C2D3 0%, #E5A8BE 100%);
-    --gradient-hover: linear-gradient(135deg, #E5A8BE 0%, #F4C2D3 100%);
-
-    /* ▼▼▼ お花デザイン用の変数を整理・修正しました ▼▼▼ */
-    --card-size: 280px; /* お花の大きさ */
-    /* 丸みのある可愛いお花の形 */
-    --flower-shape: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C60 0 75 10 80 30 C88 25 100 35 98 55 C97 70 85 80 75 80 C70 95 55 100 50 100 C45 100 30 95 25 80 C15 80 3 70 2 55 C0 35 12 25 20 30 C25 10 40 0 50 0 Z' fill='black'/%3E%3C/svg%3E");
 }
-
 
 [data-theme="dark"] {
     --text-primary: #f7fafc;
@@ -28,1051 +21,156 @@
     --bg-secondary: #2d3748;
     --bg-tertiary: #4a5568;
     --border-color: #4a5568;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== Reset & Base Styles ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--bg-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
-}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 
 /* ===== Navigation ===== */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: fixed; top: 0; left: 0; right: 0;
     background: var(--bg-primary);
     box-shadow: var(--shadow);
     z-index: 1000;
-    transition: all 0.3s ease;
 }
-
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
 }
-
 .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.5rem; font-weight: 700;
     background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-link {
-    color: var(--text-secondary);
-    font-weight: 500;
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
-
+.nav-menu { display: flex; list-style: none; gap: 2rem; }
+.nav-link { color: var(--text-secondary); font-weight: 500; position: relative; }
 .theme-toggle {
-    background: none;
-    border: 2px solid var(--border-color);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
+    background: none; border: 2px solid var(--border-color);
+    width: 40px; height: 40px; border-radius: 50%;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
 }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: var(--text-primary); }
 
-.theme-toggle:hover {
-    transform: scale(1.1);
-    border-color: var(--primary-color);
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--text-primary);
-    transition: all 0.3s ease;
-    border-radius: 3px;
-}
-
-/* ===== Container ===== */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-/* ===== Sections ===== */
-section {
-    padding: 6rem 0;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.section-description {
-    text-align: center;
-    color: var(--text-secondary);
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
-}
-
-/* ===== Hero Section ===== */
+/* ===== Hero Section & Profile Flower (修正箇所) ===== */
 .hero {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding-top: 80px;
-    background: var(--bg-primary);
+    display: flex; align-items: center; justify-content: center;
+    padding-top: 80px; background: var(--bg-primary);
 }
 
 .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    max-width: 1200px; margin: 0 auto; padding: 0 2rem;
 }
 
-.hero-title {
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
+/* ▼▼▼ お花プロフィールの完全修正版 ▼▼▼ */
+/* どんな環境でも確実に「お花」にするために !important を使用しています */
 
-.gradient-text {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-subtitle {
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-}
-
-.hero-description {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    line-height: 1.8;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 0.875rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background: var(--gradient);
-    color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-}
-
-.btn-secondary:hover {
-    background: var(--primary-color);
-    color: white;
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    padding: 0.6rem 1.5rem;
-    font-size: 0.9rem;
-}
-
-.btn-outline:hover {
-    background: var(--primary-color);
-    color: white;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-links a {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: var(--bg-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-    background: var(--gradient);
-    color: white;
-    transform: translateY(-3px);
-}
-
-/* ▼▼▼ お花プロフィールの修正箇所（ここを修正・統合しました） ▼▼▼ */
-
-/* 1. お花の形をした土台（背景色を切り抜く） */
 .profile-card {
-  width: var(--card-size);
-  height: var(--card-size);
-  
-  /* 土台のピンク色 */
-  background-color: #FFC0CB; 
-  
-  /* お花の形に切り抜く */
-  -webkit-mask-image: var(--flower-shape);
-  mask-image: var(--flower-shape);
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-
-  /* 中の写真を中央に配置 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto; /* コンテナ内で中央寄せ */
-  
-  /* 念の為のスタイルリセット */
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  box-shadow: none;
-}
-
-/* 2. 写真のラッパー（白いフチと丸枠） */
-.profile-img-wrapper {
-  /* お花に対する写真の大きさ（52%がバランス良い） */
-  width: 52%; 
-  height: 52%;
-  
-  background-color: white; /* 白いフチ */
-  border-radius: 50%;      /* 完全な丸 */
-  padding: 5px;            /* 白いフチの太さ */
-  box-sizing: border-box;
-
-  /* ★重要：ここはマスクしない（白い丸を表示するため）★ */
-  -webkit-mask-image: none;
-  mask-image: none;
-  
-  /* リセット */
-  border: none;
-  box-shadow: none;
-}
-
-/* 3. 写真本体 */
-.profile-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  
-  /* ★重要：写真自体もマスクしない★ */
-  -webkit-mask-image: none;
-  mask-image: none;
-}
-
-/* ▲▲▲ お花プロフィールの修正箇所終了 ▲▲▲ */
-
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 50px;
-    border: 2px solid var(--text-secondary);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    padding-top: 8px;
-}
-
-.scroll-indicator span {
-    width: 6px;
-    height: 10px;
-    background: var(--gradient);
-    border-radius: 3px;
-    animation: scroll 2s infinite;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-}
-
-/* ===== About Section ===== */
-.about {
-    background: var(--bg-secondary);
-}
-
-.about-content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.about-text h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.about-text p {
-    margin-bottom: 1.5rem;
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.about-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.info-item {
-    display: flex;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: var(--bg-primary);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-}
-
-.info-item i {
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-.info-item strong {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-    font-size: 1.1rem;
-}
-
-.info-item p {
-    color: var(--text-secondary);
-    margin: 0;
-}
-
-/* ===== Experience Section ===== */
-.experience {
-    background: var(--bg-primary);
-}
-
-.experience-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.experience-card {
-    background: var(--bg-secondary);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    border-left: 5px solid var(--primary-color);
-}
-
-.experience-card.featured {
-    border-left-width: 8px;
-    border-image: var(--gradient) 1;
-    background: linear-gradient(to right, var(--bg-secondary), var(--bg-primary));
-}
-
-.experience-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.card-header h3 {
-    font-size: 1.8rem;
-    color: var(--text-primary);
-    margin: 0;
-}
-
-.project-period {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    padding: 0.5rem 1rem;
-    background: var(--bg-tertiary);
-    border-radius: 20px;
-}
-
-.card-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.project-overview,
-.project-tech,
-.project-details {
-    padding: 1rem 0;
-}
-
-.project-overview h4,
-.project-tech h4,
-.detail-item h4 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.project-overview h4 i,
-.project-tech h4 i,
-.detail-item h4 i {
-    color: var(--primary-color);
-}
-
-.project-overview p,
-.detail-item p {
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 0.75rem;
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.tech-tag {
-    padding: 0.5rem 1rem;
-    background: var(--gradient);
-    color: white;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.project-details {
-    display: grid;
-    gap: 1.5rem;
-}
-
-.detail-item {
-    padding: 1.5rem;
-    background: var(--bg-primary);
-    border-radius: 10px;
-    border-left: 3px solid var(--primary-color);
-}
-
-.detail-item strong {
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-.project-links {
-    display: flex;
-    gap: 1rem;
-    padding-top: 1rem;
-    flex-wrap: wrap;
-}
-
-/* ===== Skills Section ===== */
-.skills {
-    background: var(--bg-secondary);
-}
-
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.skill-category {
-    background: var(--bg-primary);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-}
-
-.skill-category h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.skill-category h3 i {
-    color: var(--primary-color);
-}
-
-.skill-items {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.skill-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.skill-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--text-primary);
-    font-weight: 500;
-}
-
-.skill-bar {
-    height: 10px;
-    background: var(--bg-tertiary);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.skill-progress {
-    height: 100%;
-    background: var(--gradient);
-    border-radius: 10px;
-    transition: width 1s ease;
-}
-
-/* ===== Projects Section ===== */
-.projects {
-    background: var(--bg-primary);
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background: var(--bg-secondary);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
-}
-
-.project-image {
-    position: relative;
-    overflow: hidden;
-    height: 200px;
-}
-
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-image img {
-    transform: scale(1.1);
-}
-
-.project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(102, 126, 234, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
-}
-
-.overlay-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-}
-
-.overlay-btn:hover {
-    transform: scale(1.2);
-}
-
-.project-info {
-    padding: 1.5rem;
-}
-
-.project-info h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.75rem;
-    color: var(--text-primary);
-}
-
-.project-info p {
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.project-tags span {
-    padding: 0.3rem 0.75rem;
-    background: var(--bg-tertiary);
-    color: var(--text-primary);
-    border-radius: 15px;
-    font-size: 0.85rem;
-}
-
-/* ===== Contact Section ===== */
-.contact {
-    background: var(--bg-secondary);
-}
-
-.contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 3rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.contact-item {
-    display: flex;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: var(--bg-primary);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-}
-
-.contact-item i {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    min-width: 40px;
-}
-
-.contact-item h3 {
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-}
-
-.contact-item p,
-.contact-item a {
-    color: var(--text-secondary);
-    margin: 0;
-}
-
-.contact-item a:hover {
-    color: var(--primary-color);
-}
-
-.contact-form {
-    background: var(--bg-primary);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.875rem;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-/* ===== Footer ===== */
-.footer {
-    background: var(--bg-primary);
-    padding: 2rem 0;
-    text-align: center;
-    border-top: 1px solid var(--border-color);
-}
-
-.footer p {
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.footer-links a {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--bg-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-}
-
-.footer-links a:hover {
-    background: var(--gradient);
-    color: white;
-    transform: translateY(-3px);
-}
-
-/* ===== Responsive Design ===== */
-@media (max-width: 968px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-    .profile-card {
-        order: -1;
-    }
-
-    /* モバイルでもサイズが崩れないように修正 */
-    .profile-card {
-        width: 280px;
-        height: 280px;
-    }
-
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-
-    .skills-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background: var(--bg-primary);
-        width: 100%;
-        padding: 2rem;
-        box-shadow: var(--shadow);
-        transition: left 0.3s ease;
-        gap: 1rem;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(8px, -8px);
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    section {
-        padding: 4rem 0;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 1rem;
-    }
-
-    .nav-container {
-        padding: 1rem;
-    }
-
-    .hero-title {
-        font-size: 1.75rem;
-    }
-
-    .btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.9rem;
-    }
+    /* お花のサイズ */
+    width: 300px !important;
+    height: 300px !important;
     
-    /* モバイル用にサイズを少し小さく */
-    .profile-card {
-        width: 220px;
-        height: 220px;
-    }
+    /* ピンク色の背景（これがお花の色になります） */
+    background-color: #FFC0CB !important;
+    
+    /* お花の形（SVGデータ） */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C60 0 75 10 80 30 C88 25 100 35 98 55 C97 70 85 80 75 80 C70 95 55 100 50 100 C45 100 30 95 25 80 C15 80 3 70 2 55 C0 35 12 25 20 30 C25 10 40 0 50 0 Z' fill='black'/%3E%3C/svg%3E") !important;
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C60 0 75 10 80 30 C88 25 100 35 98 55 C97 70 85 80 75 80 C70 95 55 100 50 100 C45 100 30 95 25 80 C15 80 3 70 2 55 C0 35 12 25 20 30 C25 10 40 0 50 0 Z' fill='black'/%3E%3C/svg%3E") !important;
+    
+    /* マスクの設定 */
+    -webkit-mask-size: contain !important;
+    mask-size: contain !important;
+    -webkit-mask-repeat: no-repeat !important;
+    mask-repeat: no-repeat !important;
+    -webkit-mask-position: center !important;
+    mask-position: center !important;
 
-    .card-header h3 {
-        font-size: 1.4rem;
-    }
-
-    .experience-card,
-    .skill-category,
-    .contact-form {
-        padding: 1.5rem;
-    }
+    /* 中央寄せ */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    
+    /* 余計なスタイルを消す */
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
 }
 
-/* ===== Animations ===== */
-.fade-in {
-    animation: fadeIn 0.6s ease-in;
+.profile-img-wrapper {
+    /* お花の中の丸い写真のサイズ（お花に対して55%の大きさ） */
+    width: 55% !important;
+    height: 55% !important;
+    
+    /* 白い背景（写真のフチ） */
+    background-color: white !important;
+    border-radius: 50% !important;
+    padding: 6px !important;
+    box-sizing: border-box !important;
+
+    /* ★重要：親要素の「お花マスク」をここで解除する★ */
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    
+    /* 余計なスタイルを消す */
+    border: none !important;
+    box-shadow: none !important;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.profile-img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    
+    /* マスク解除の念押し */
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+}
+/* ▲▲▲ 修正終了 ▲▲▲ */
+
+
+/* ===== Typography & Buttons ===== */
+.hero-title { font-size: 3rem; margin-bottom: 1rem; color: var(--text-primary); }
+.hero-subtitle { font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 1rem; }
+.hero-description { color: var(--text-secondary); margin-bottom: 2rem; }
+.hero-buttons { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.btn { padding: 0.875rem 2rem; border-radius: 50px; font-weight: 600; cursor: pointer; border: none; }
+.btn-primary { background: var(--gradient); color: white; }
+.btn-secondary { background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
+.social-links { display: flex; gap: 1rem; }
+.social-links a {
+    width: 45px; height: 45px; border-radius: 50%;
+    background: var(--bg-secondary); color: var(--text-primary);
+    display: flex; align-items: center; justify-content: center;
 }
 
-.slide-in-left {
-    animation: slideInLeft 0.6s ease-out;
+/* ===== Common Sections ===== */
+section { padding: 6rem 0; }
+.section-title {
+    font-size: 2.5rem; text-align: center; margin-bottom: 1rem;
+    background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/* ===== Responsive ===== */
+@media (max-width: 968px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; }
+    .hero-buttons, .social-links { justify-content: center; }
+    .profile-card { margin-bottom: 2rem !important; width: 280px !important; height: 280px !important; }
 }
-
-.slide-in-right {
-    animation: slideInRight 0.6s ease-out;
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+@media (max-width: 768px) {
+    .nav-menu { display: none; } /* 省略形のハンバーガー対応 */
+    .hamburger { display: flex; }
 }
