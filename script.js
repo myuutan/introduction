@@ -323,7 +323,6 @@ cursorDot.style.cssText = `
     position: fixed;
     pointer-events: none;
     z-index: 10001;
-    transition: all 0.15s ease;
     transform: translate(-50%, -50%);
     display: none;
 `;
@@ -339,7 +338,7 @@ cursorRing.style.cssText = `
     position: fixed;
     pointer-events: none;
     z-index: 10000;
-    transition: all 0.2s ease;
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
     transform: translate(-50%, -50%);
     display: none;
     animation: cursorPulse 2s infinite;
@@ -364,33 +363,17 @@ document.head.appendChild(style);
 document.body.appendChild(cursorDot);
 document.body.appendChild(cursorRing);
 
-let mouseX = 0, mouseY = 0;
-let dotX = 0, dotY = 0;
-let ringX = 0, ringY = 0;
-
 document.addEventListener('mousemove', (e) => {
     cursorDot.style.display = 'block';
     cursorRing.style.display = 'block';
 
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    // Instant position update for both dot and ring
+    cursorDot.style.left = e.clientX + 'px';
+    cursorDot.style.top = e.clientY + 'px';
 
-    // Instant position update for dot
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top = mouseY + 'px';
+    cursorRing.style.left = e.clientX + 'px';
+    cursorRing.style.top = e.clientY + 'px';
 });
-
-// Smooth ring following
-function animateRing() {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top = ringY + 'px';
-
-    requestAnimationFrame(animateRing);
-}
-animateRing();
 
 // Enlarge cursor on hover over interactive elements
 document.querySelectorAll('a, button, .btn').forEach(el => {
