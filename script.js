@@ -312,38 +312,100 @@ if (footerText) {
 }
 
 // ===== Cursor Effect (Optional Enhancement) =====
-const cursor = document.createElement('div');
-cursor.className = 'custom-cursor';
-cursor.style.cssText = `
-    width: 20px;
-    height: 20px;
-    border: 2px solid #667eea;
+// Create cursor dot (center point)
+const cursorDot = document.createElement('div');
+cursorDot.className = 'cursor-dot';
+cursorDot.style.cssText = `
+    width: 8px;
+    height: 8px;
+    background: #1e3a8a;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
-    z-index: 9999;
-    transition: all 0.1s ease;
+    z-index: 10001;
+    transition: all 0.15s ease;
+    transform: translate(-50%, -50%);
     display: none;
 `;
 
-document.body.appendChild(cursor);
+// Create cursor ring (outer circle)
+const cursorRing = document.createElement('div');
+cursorRing.className = 'cursor-ring';
+cursorRing.style.cssText = `
+    width: 30px;
+    height: 30px;
+    border: 2px solid #1e3a8a;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transition: all 0.2s ease;
+    transform: translate(-50%, -50%);
+    display: none;
+    animation: cursorPulse 2s infinite;
+`;
+
+// Add pulse animation to styles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes cursorPulse {
+        0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 0.8;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+document.body.appendChild(cursorDot);
+document.body.appendChild(cursorRing);
+
+let mouseX = 0, mouseY = 0;
+let dotX = 0, dotY = 0;
+let ringX = 0, ringY = 0;
 
 document.addEventListener('mousemove', (e) => {
-    cursor.style.display = 'block';
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+    cursorDot.style.display = 'block';
+    cursorRing.style.display = 'block';
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Instant position update for dot
+    cursorDot.style.left = mouseX + 'px';
+    cursorDot.style.top = mouseY + 'px';
 });
+
+// Smooth ring following
+function animateRing() {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top = ringY + 'px';
+
+    requestAnimationFrame(animateRing);
+}
+animateRing();
 
 // Enlarge cursor on hover over interactive elements
 document.querySelectorAll('a, button, .btn').forEach(el => {
     el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-        cursor.style.backgroundColor = 'rgba(102, 126, 234, 0.2)';
+        cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        cursorRing.style.width = '50px';
+        cursorRing.style.height = '50px';
+        cursorRing.style.borderColor = '#3b82f6';
     });
 
     el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        cursor.style.backgroundColor = 'transparent';
+        cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursorRing.style.width = '30px';
+        cursorRing.style.height = '30px';
+        cursorRing.style.borderColor = '#1e3a8a';
     });
 });
 
