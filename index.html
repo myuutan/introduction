@@ -511,7 +511,11 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="aad8107c-bb82-4acd-8cd1-b01842ca3012">
+                    <input type="hidden" name="subject" value="ポートフォリオからのお問い合わせ">
+                    <input type="hidden" name="redirect" value="https://myuutan.github.io/introduction/#contact">
+
                     <div class="form-group">
                         <label for="name">お名前</label>
                         <input type="text" id="name" name="name" required>

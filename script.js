@@ -116,26 +116,45 @@ document.querySelectorAll('.experience-card, .project-card, .about-text, .contac
     observer.observe(el);
 });
 
-// ===== Form Handling =====
+// ===== Form Handling with Web3Forms =====
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
+    const formData = new FormData(contactForm);
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
 
-    // Here you would typically send the data to a server
-    console.log('Form submitted:', formData);
+    // Disable button and show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = '送信中...';
 
-    // Show success message
-    alert('お問い合わせありがとうございます。確認次第、ご連絡させていただきます。');
+    try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
 
-    // Reset form
-    contactForm.reset();
+        const data = await response.json();
+
+        if (data.success) {
+            // Show success message
+            alert('お問い合わせありがとうございます。確認次第、ご連絡させていただきます。');
+            // Reset form
+            contactForm.reset();
+        } else {
+            // Show error message
+            alert('送信に失敗しました。もう一度お試しください。');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('送信に失敗しました。もう一度お試しください。');
+    } finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+    }
 });
 
 // ===== Typing Effect for Hero Title =====
