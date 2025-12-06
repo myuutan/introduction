@@ -13,7 +13,9 @@
     --shadow-lg: 0 20px 50px rgba(244, 194, 211, 0.4);
     --gradient: linear-gradient(135deg, #F4C2D3 0%, #E5A8BE 100%);
     --gradient-hover: linear-gradient(135deg, #E5A8BE 0%, #F4C2D3 100%);
-    /* 理想の画像に近い、5枚花びらの形データ */
+
+    /* ▼▼▼ お花デザイン用の変数を追加しました ▼▼▼ */
+    --card-size: 300px; /* お花の大きさ */
     --flower-shape: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C60 0 75 10 80 30 C88 25 100 35 98 55 C97 70 85 80 75 80 C70 95 55 100 50 100 C45 100 30 95 25 80 C15 80 3 70 2 55 C0 35 12 25 20 30 C25 10 40 0 50 0 Z' fill='black'/%3E%3C/svg%3E");
 }
 
@@ -307,66 +309,66 @@ section {
     transform: translateY(-3px);
 }
 
+/* ▼▼▼ お花プロフィールの修正箇所（ここを完全に書き換えました） ▼▼▼ */
+
+/* 1. お花の形をした土台 */
 .profile-card {
   width: var(--card-size);
   height: var(--card-size);
-  /* 背景色を枠線の色に設定 */
-  background-color: var(--border-color);
-  /* paddingで内側に余白を作り、これが枠線の太さになります */
-  padding: var(--border-width);
-  /* paddingを含めたボックスサイズ計算を指定 */
-  box-sizing: border-box;
+  
+  /* 土台のピンク色 */
+  background-color: #FFC0CB; 
+  
+  /* お花の形に切り抜く */
+  -webkit-mask-image: var(--flower-shape);
+  mask-image: var(--flower-shape);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 
-  /* flexboxで中の要素を中央寄せ */
+  /* 中の写真を中央に配置 */
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* 花の形で全体を切り抜く */
-  -webkit-mask-image: var(--flower-mask);
-  mask-image: var(--flower-mask);
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
   
-  /* 既存のスタイルをリセット（必要に応じて） */
+  /* 念の為のスタイルリセット */
+  border: none;
   border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  margin: auto; /* コンテナ内で中央寄せ */
 }
 
-/* 2. 画像のラッパー：枠線の内側の領域 */
+/* 2. 写真の周りの白いフチと丸枠 */
 .profile-img-wrapper {
-  /* 親要素(.profile-card)のpaddingの内側いっぱいに広げる */
-  width: 100%;
-  height: 100%;
-  /* 画像の背景色（透過画像などの場合用） */
-  background-color: white;
+  /* お花に対する写真の大きさ（55%くらいがバランス良い） */
+  width: 55%; 
+  height: 55%;
+  
+  background-color: white; /* 白いフチ */
+  border-radius: 50%;      /* 完全な丸 */
+  padding: 5px;            /* 白いフチの太さ */
+  box-sizing: border-box;
 
-  /* 画像自体も同じ花の形で切り抜く */
-  -webkit-mask-image: var(--flower-mask);
-  mask-image: var(--flower-mask);
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-
-  /* 既存のスタイルをリセット */
-  border-radius: 0;
-  overflow: visible; /* maskを使うのでoverflowはvisibleでOK */
+  /* ここはマスクしない（白い丸を表示するため） */
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
-/* 3. プロフィール画像 */
+/* 3. 写真本体 */
 .profile-img {
   width: 100%;
   height: 100%;
-  /* 画像のアスペクト比を維持して領域を埋める */
+  border-radius: 50%;
   object-fit: cover;
   display: block;
 }
+
+/* ▲▲▲ お花プロフィールの修正箇所終了 ▲▲▲ */
+
 
 @keyframes float {
     0%, 100% {
@@ -915,7 +917,8 @@ section {
         order: -1;
     }
 
-    .profile-img-wrapper {
+    /* モバイルでもサイズが崩れないように修正 */
+    .profile-card {
         width: 280px;
         height: 280px;
     }
@@ -1001,8 +1004,9 @@ section {
         padding: 0.75rem 1.5rem;
         font-size: 0.9rem;
     }
-
-    .profile-img-wrapper {
+    
+    /* モバイル用にサイズを少し小さく */
+    .profile-card {
         width: 220px;
         height: 220px;
     }
