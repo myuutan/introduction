@@ -107,22 +107,12 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('fade-in');
-
-            // Animate skill bars when they come into view
-            if (entry.target.classList.contains('skill-item')) {
-                const progressBar = entry.target.querySelector('.skill-progress');
-                const width = progressBar.style.width;
-                progressBar.style.width = '0';
-                setTimeout(() => {
-                    progressBar.style.width = width;
-                }, 100);
-            }
         }
     });
 }, observerOptions);
 
-// Observe elements
-document.querySelectorAll('.experience-card, .skill-item, .project-card, .about-text, .contact-item').forEach(el => {
+// Observe elements (excluding skill-item to prevent animation conflicts)
+document.querySelectorAll('.experience-card, .project-card, .about-text, .contact-item').forEach(el => {
     observer.observe(el);
 });
 
@@ -175,22 +165,28 @@ let skillsAnimated = false;
 
 function animateSkills() {
     const skillsSection = document.getElementById('skills');
+    if (!skillsSection) return;
+
     const skillsPosition = skillsSection.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight;
+    const screenPosition = window.innerHeight / 1.3;
 
     if (skillsPosition < screenPosition && !skillsAnimated) {
-        skillBars.forEach(bar => {
-            const width = bar.style.width;
+        skillBars.forEach((bar, index) => {
+            const targetWidth = bar.getAttribute('style').match(/width:\s*(\d+%)/)[1];
             bar.style.width = '0';
+            bar.style.transition = 'width 1s ease-out';
+
             setTimeout(() => {
-                bar.style.width = width;
-            }, 100);
+                bar.style.width = targetWidth;
+            }, index * 100);
         });
         skillsAnimated = true;
     }
 }
 
 window.addEventListener('scroll', animateSkills);
+// Also trigger on page load in case skills section is visible
+window.addEventListener('load', animateSkills);
 
 // ===== Particle Background (Optional Enhancement) =====
 function createParticle() {
