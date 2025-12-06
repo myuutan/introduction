@@ -13,6 +13,11 @@
     --shadow-lg: 0 20px 50px rgba(244, 194, 211, 0.4);
     --gradient: linear-gradient(135deg, #F4C2D3 0%, #E5A8BE 100%);
     --gradient-hover: linear-gradient(135deg, #E5A8BE 0%, #F4C2D3 100%);
+
+    /* ▼▼▼ お花の背景画像データ（ピンクの花、黒い縁取り、黄色い中心） ▼▼▼ */
+    /* ご提示いただいた画像に近い形をSVGで再現しました */
+    --flower-bg-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 2 C60 2 75 12 80 32 C88 27 100 37 98 57 C97 72 85 82 75 82 C70 97 55 102 50 102 C45 102 30 97 25 82 C15 82 3 72 2 57 C0 37 12 27 20 32 C25 12 40 2 50 2 Z' fill='%23FFC0CB' stroke='black' stroke-width='2'/%3E%3Ccircle cx='50' cy='52' r='18' fill='%23FFFACD'/%3E%3C/svg%3E");
+    --card-size: 320px; /* お花全体のサイズ */
 }
 
 
@@ -305,66 +310,69 @@ section {
     transform: translateY(-3px);
 }
 
+/* ▼▼▼▼▼ お花プロフィール画像の修正箇所（ここから） ▼▼▼▼▼ */
+
+/* 1. プロフィールカード（お花の土台） */
 .profile-card {
-  width: var(--card-size);
-  height: var(--card-size);
-  /* 背景色を枠線の色に設定 */
-  background-color: var(--border-color);
-  /* paddingで内側に余白を作り、これが枠線の太さになります */
-  padding: var(--border-width);
-  /* paddingを含めたボックスサイズ計算を指定 */
-  box-sizing: border-box;
+    width: var(--card-size);
+    height: var(--card-size);
+    
+    /* マスクを使わず、背景画像としてお花を表示します */
+    background-image: var(--flower-bg-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* 背景色などは透明に */
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    
+    /* マスクの解除（念のため） */
+    -webkit-mask-image: none;
+    mask-image: none;
 
-  /* flexboxで中の要素を中央寄せ */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* 花の形で全体を切り抜く */
-  -webkit-mask-image: var(--flower-mask);
-  mask-image: var(--flower-mask);
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  
-  /* 既存のスタイルをリセット（必要に応じて） */
-  border-radius: 0;
+    /* 中の画像を中央配置 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
-/* 2. 画像のラッパー：枠線の内側の領域 */
+/* 2. 写真の枠（黄色い部分に乗る丸いエリア） */
 .profile-img-wrapper {
-  /* 親要素(.profile-card)のpaddingの内側いっぱいに広げる */
-  width: 100%;
-  height: 100%;
-  /* 画像の背景色（透過画像などの場合用） */
-  background-color: white;
-
-  /* 画像自体も同じ花の形で切り抜く */
-  -webkit-mask-image: var(--flower-mask);
-  mask-image: var(--flower-mask);
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-
-  /* 既存のスタイルをリセット */
-  border-radius: 0;
-  overflow: visible; /* maskを使うのでoverflowはvisibleでOK */
+    /* お花の画像の「黄色い円」の大きさに合わせて調整（約40%） */
+    width: 40%; 
+    height: 40%;
+    
+    /* 写真を丸くする */
+    border-radius: 50%;
+    
+    /* 必要なら白いフチをつける */
+    background-color: white;
+    padding: 0; /* 黄色い部分いっぱいにするなら0、フチを作るなら2-4px */
+    
+    /* スタイルのリセット */
+    box-sizing: border-box;
+    border: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow: hidden; /* 写真がはみ出さないように */
+    margin-top: 5px; /* お花の中心位置の微調整 */
 }
 
-/* 3. プロフィール画像 */
+/* 3. プロフィール画像本体 */
 .profile-img {
-  width: 100%;
-  height: 100%;
-  /* 画像のアスペクト比を維持して領域を埋める */
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
 }
+
+/* ▲▲▲▲▲ お花プロフィール画像の修正箇所（ここまで） ▲▲▲▲▲ */
 
 @keyframes float {
     0%, 100% {
@@ -913,9 +921,16 @@ section {
         order: -1;
     }
 
-    .profile-img-wrapper {
+    /* モバイルでもサイズが崩れないように修正 */
+    .profile-card {
         width: 280px;
         height: 280px;
+    }
+    
+    .profile-img-wrapper {
+        /* モバイル表示でも親要素に対しての比率(%)指定なので自動調整されますが、
+           念のため明示的に設定を変える必要があればここに記述します。
+           現在は親の280pxに対して40%になるので問題ありません */
     }
 
     .contact-content {
@@ -999,8 +1014,9 @@ section {
         padding: 0.75rem 1.5rem;
         font-size: 0.9rem;
     }
-
-    .profile-img-wrapper {
+    
+    /* モバイル用にサイズを少し小さく */
+    .profile-card {
         width: 220px;
         height: 220px;
     }
