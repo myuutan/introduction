@@ -14,8 +14,9 @@
     --gradient: linear-gradient(135deg, #F4C2D3 0%, #E5A8BE 100%);
     --gradient-hover: linear-gradient(135deg, #E5A8BE 0%, #F4C2D3 100%);
 
-    /* ▼▼▼ お花デザイン用の変数を追加しました ▼▼▼ */
-    --card-size: 300px; /* お花の大きさ */
+    /* ▼▼▼ お花デザイン用の変数を整理・修正しました ▼▼▼ */
+    --card-size: 280px; /* お花の大きさ */
+    /* 丸みのある可愛いお花の形 */
     --flower-shape: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C60 0 75 10 80 30 C88 25 100 35 98 55 C97 70 85 80 75 80 C70 95 55 100 50 100 C45 100 30 95 25 80 C15 80 3 70 2 55 C0 35 12 25 20 30 C25 10 40 0 50 0 Z' fill='black'/%3E%3C/svg%3E");
 }
 
@@ -309,9 +310,9 @@ section {
     transform: translateY(-3px);
 }
 
-/* ▼▼▼ お花プロフィールの修正箇所（ここを完全に書き換えました） ▼▼▼ */
+/* ▼▼▼ お花プロフィールの修正箇所（ここを修正・統合しました） ▼▼▼ */
 
-/* 1. お花の形をした土台 */
+/* 1. お花の形をした土台（背景色を切り抜く） */
 .profile-card {
   width: var(--card-size);
   height: var(--card-size);
@@ -333,29 +334,33 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto; /* コンテナ内で中央寄せ */
   
   /* 念の為のスタイルリセット */
   border: none;
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  margin: auto; /* コンテナ内で中央寄せ */
 }
 
-/* 2. 写真の周りの白いフチと丸枠 */
+/* 2. 写真のラッパー（白いフチと丸枠） */
 .profile-img-wrapper {
-  /* お花に対する写真の大きさ（55%くらいがバランス良い） */
-  width: 55%; 
-  height: 55%;
+  /* お花に対する写真の大きさ（52%がバランス良い） */
+  width: 52%; 
+  height: 52%;
   
   background-color: white; /* 白いフチ */
   border-radius: 50%;      /* 完全な丸 */
   padding: 5px;            /* 白いフチの太さ */
   box-sizing: border-box;
 
-  /* ここはマスクしない（白い丸を表示するため） */
+  /* ★重要：ここはマスクしない（白い丸を表示するため）★ */
   -webkit-mask-image: none;
   mask-image: none;
+  
+  /* リセット */
+  border: none;
+  box-shadow: none;
 }
 
 /* 3. 写真本体 */
@@ -365,6 +370,10 @@ section {
   border-radius: 50%;
   object-fit: cover;
   display: block;
+  
+  /* ★重要：写真自体もマスクしない★ */
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 /* ▲▲▲ お花プロフィールの修正箇所終了 ▲▲▲ */
