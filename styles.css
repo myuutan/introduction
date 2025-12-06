@@ -116,7 +116,6 @@ section { padding: 6rem 0; }
 .social-links a:hover { background: var(--gradient); color: white; transform: translateY(-3px); }
 
 /* ▼▼▼▼▼ お花プロフィール画像の最終修正版（ここから） ▼▼▼▼▼ */
-/* 「重ね合わせ方式」に変更しました。これが一番確実です。 */
 
 /* 1. 外側のコンテナ（基準点） */
 .profile-card {
@@ -131,6 +130,7 @@ section { padding: 6rem 0; }
 }
 
 /* 2. ピンク色のお花の土台（::beforeで作成し、後ろに配置） */
+/* ★ここで形を変更しました★ */
 .profile-card::before {
     content: "";
     position: absolute;
@@ -142,9 +142,9 @@ section { padding: 6rem 0; }
     /* ピンク色の塗りつぶし */
     background-color: #FFC0CB;
     
-    /* シンプルな花の形のマスクを適用 */
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C60 0 70 10 75 25 C85 20 95 25 98 35 C102 50 95 60 85 65 C90 75 85 90 70 95 C55 100 45 100 30 95 C15 90 10 75 15 65 C5 60 -2 50 2 35 C5 25 15 20 25 25 C30 10 40 0 50 0 Z' fill='black'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C60 0 70 10 75 25 C85 20 95 25 98 35 C102 50 95 60 85 65 C90 75 85 90 70 95 C55 100 45 100 30 95 C15 90 10 75 15 65 C5 60 -2 50 2 35 C5 25 15 20 25 25 C30 10 40 0 50 0 Z' fill='black'/%3E%3C/svg%3E");
+    /* より丸い、半円を5つ繋げたような形のマスクに変更 */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C 65 0 75 15 75 30 C 85 25 100 35 100 50 C 100 65 85 75 75 70 C 75 85 65 100 50 100 C 35 100 25 85 25 70 C 15 75 0 65 0 50 C 0 35 15 25 25 30 C 25 15 35 0 50 0 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C 65 0 75 15 75 30 C 85 25 100 35 100 50 C 100 65 85 75 75 70 C 75 85 65 100 50 100 C 35 100 25 85 25 70 C 15 75 0 65 0 50 C 0 35 15 25 25 30 C 25 15 35 0 50 0 Z' fill='black'/%3E%3C/svg%3E");
     
     -webkit-mask-size: contain;
     mask-size: contain;
@@ -360,6 +360,11 @@ section { padding: 6rem 0; }
     .profile-card { order: -1; }
     /* モバイルでもサイズが崩れないように修正 */
     .profile-card { width: 280px !important; height: 280px !important; }
+    .profile-img-wrapper {
+        /* モバイル表示でも親要素に対しての比率(%)指定なので自動調整されますが、
+           念のため明示的に設定を変える必要があればここに記述します。
+           現在は親の280pxに対して45%になるので問題ありません */
+    }
     .contact-content { grid-template-columns: 1fr; }
     .skills-container { grid-template-columns: 1fr; }
 }
