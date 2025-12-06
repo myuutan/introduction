@@ -1,8 +1,8 @@
 /* ===== Variables ===== */
 :root {
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
-    --accent-color: #f093fb;
+    --primary-color: #0ABAB5;
+    --secondary-color: #08a09b;
+    --accent-color: #0dd4ce;
     --text-primary: #2d3748;
     --text-secondary: #4a5568;
     --bg-primary: #ffffff;
@@ -11,8 +11,8 @@
     --border-color: #e2e8f0;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
-    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-hover: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    --gradient: linear-gradient(135deg, #0ABAB5 0%, #08a09b 100%);
+    --gradient-hover: linear-gradient(135deg, #08a09b 0%, #0ABAB5 100%);
 }
 
 [data-theme="dark"] {
