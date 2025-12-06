@@ -1,18 +1,18 @@
 /* ===== Variables ===== */
 :root {
-    --primary-color: #0ABAB5;
-    --secondary-color: #08a09b;
-    --accent-color: #0dd4ce;
+    --primary-color: #F4C2D3;
+    --secondary-color: #E5A8BE;
+    --accent-color: #FDDDE8;
     --text-primary: #2d3748;
     --text-secondary: #4a5568;
     --bg-primary: #ffffff;
-    --bg-secondary: #f7fafc;
-    --bg-tertiary: #edf2f7;
-    --border-color: #e2e8f0;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
-    --gradient: linear-gradient(135deg, #0ABAB5 0%, #08a09b 100%);
-    --gradient-hover: linear-gradient(135deg, #08a09b 0%, #0ABAB5 100%);
+    --bg-secondary: #FFF8FA;
+    --bg-tertiary: #FFF0F5;
+    --border-color: #F4C2D3;
+    --shadow: 0 10px 30px rgba(244, 194, 211, 0.3);
+    --shadow-lg: 0 20px 50px rgba(244, 194, 211, 0.4);
+    --gradient: linear-gradient(135deg, #F4C2D3 0%, #E5A8BE 100%);
+    --gradient-hover: linear-gradient(135deg, #E5A8BE 0%, #F4C2D3 100%);
 }
 
 [data-theme="dark"] {
