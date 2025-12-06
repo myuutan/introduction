@@ -13,19 +13,10 @@
     --shadow-lg: 0 20px 50px rgba(244, 194, 211, 0.4);
     --gradient: linear-gradient(135deg, #F4C2D3 0%, #E5A8BE 100%);
     --gradient-hover: linear-gradient(135deg, #E5A8BE 0%, #F4C2D3 100%);
-    /* 花の形のマスク画像（Data URIでSVGを埋め込み） */
-    /* ※形状は一般的な桜の形です。必要に応じて差し替えてください */
-    --flower-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C 60 25, 75 35, 100 40 C 80 55, 75 75, 60 100 C 45 75, 40 55, 0 40 C 25 35, 40 25, 50 0 Z' fill='black'/%3E%3C/svg%3E");
-  
-    /* 枠線の色（イラストのようなピンク色） */
-    --border-color: #FFC0CB;
-  
-    /* 枠線の太さ */
-    --border-width: 12px;
-  
-    /* 全体のサイズ */
-    --card-size: 250px;
+    /* 理想の画像に近い、5枚花びらの形データ */
+    --flower-shape: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C60 0 75 10 80 30 C88 25 100 35 98 55 C97 70 85 80 75 80 C70 95 55 100 50 100 C45 100 30 95 25 80 C15 80 3 70 2 55 C0 35 12 25 20 30 C25 10 40 0 50 0 Z' fill='black'/%3E%3C/svg%3E");
 }
+
 
 [data-theme="dark"] {
     --text-primary: #f7fafc;
