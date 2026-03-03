@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My profile | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">My profile</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About Me</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Hi, I'm Miu Nozawa
+                </h1>
+                <p class="hero-subtitle">Master's Student in Information Science</p>
+                <p class="hero-description">
+                    Nihon University Graduate School of Science and Technology
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/myuutan" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:csmi25011@g.nihon-u.ac.jp">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-img-wrapper">
+                        <img src="profile.jpg" alt="Profile Picture" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>自己紹介</h3>
+                    <p>
+                        日本大学大学院 理工学研究科 情報科学専攻の修士1年生です．
+                        フルスタックエンジニアを目指して，フロントエンドからバックエンドまで
+                        幅広い知識と技術の習得のため，日々学習を続けています．
+                    </p>
+                    <p>
+                        研究分野に限らず，自主制作等も行なっております．
+                        重視した使いやすいシステム作りを心がけています．
+                    </p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <strong>学歴</strong>
+                                <p>日本大学大学院 理工学研究科<br>情報科学専攻 修士1年</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>所在地</strong>
+                                <p>東京都</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <strong>趣味</strong>
+                                <p>アニメ鑑賞，ドラム，ショッピング
+                                </p>
+                                最近では，株や政治，経済についての関心があります．
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-description">技術的に挑戦したプロジェクトと，その中で学んだこと</p>
+
+            <div class="experience-timeline">
+                <!-- Main Project -->
+                <div class="experience-card featured">
+                    <div class="card-header">
+                        <h3>大学院研究</h3>
+                        <span class="project-period">2024年4月 - 現在</span>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="project-overview">
+                            <h4><i class="fas fa-info-circle"></i> OFDM伝送へのPolar符号の適用に関する検討</h4>
+                            <p>
+                                ここにプロジェクトの詳細な説明を記載します．
+                                どのような課題を解決するために開発したのか，
+                                どのような機能を実装したのかを具体的に書きます．
+                            </p>
+                        </div>
+
+                        <div class="project-tech">
+                            <h4><i class="fas fa-code"></i> 技術スタック</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">MATLAB</span>
+                            </div>
+                        </div>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <h4><i class="fas fa-users"></i> 開発体制</h4>
+                                <p>共同研究者: 京三製作所　期間: 1年</p>
+                            </div>
+
+                            <div class="detail-item">
+                                <h4><i class="fas fa-user-tag"></i> 参加学会 </h4>
+                                <p>
+                                    <a href="https://www.iee.jp/eiss/wp-content/uploads/sites/4/2025/07/program20250718.pdf" target="_blank" style="color: var(--primary-color);">2025年 電子情報通信学会総合大会</a><br>
+                                    <a href="https://2025rts.huicekeji.com/En/Default" target="_blank" style="color: var(--primary-color);">2025年 International Conference on Railway Technology and Systems (RTS 2025)</a>
+                                </p>
+                            </div>
+
+                            <div class="detail-item">
+                                <h4><i class="fas fa-exclamation-triangle"></i> 苦労したこと</h4>
+                                <p>
+                                    <strong>課題1:</strong> 大量のデータを効率的に処理する必要があり，
+                                    初期実装ではパフォーマンスが大幅に低下していました．
+                                </p>
+                                <p>
+                                    <strong>課題2:</strong> リアルタイム通信の実装において，
+                                    接続の安定性を保つことが困難でした．
+                                </p>
+                            </div>
+
+                                <h4><i class="fas fa-lightbulb"></i> 工夫したこと</h4>
+                                <p>
+                                    <strong>解決策1:</strong> データベースのインデックス最適化と
+                                    キャッシュ機構の導入により，クエリ速度を10倍以上改善しました．
+                                </p>
+                                <p>
+                                    <strong>解決策2:</strong> WebSocketの再接続ロジックを実装し，
+                                    自動リトライ機能とハートビート機構を追加することで，
+                                    接続の安定性を大幅に向上させました．
+                                </p>
+                            </div>
+
+                            <div class="detail-item">
+                                <h4><i class="fas fa-trophy"></i> 成果</h4>
+                                <p>
+                                    システムのパフォーマンスが向上し，ユーザー満足度が大幅に改善．
+                                    チーム内でベストプラクティスとして共有されました．
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://cir.nii.ac.jp/crid/1520867611148456448" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i> 文献資料
+                            </a>
+                            <a href="https://2025rts.huicekeji.com/En/Default" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i> RTS 2025
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub Project 1 -->
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3>サークル設立・運営</h3>
+                        <span class="project-period">2021年4月 - 2023年</span>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="project-overview">
+                            <h4><i class="fas fa-info-circle"></i> 概要</h4>
+                            <p>
+                                大学でサークルを設立し，4年間運営を担当しました．
+                            </p>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://www.instagram.com/infinity_futsal.cst/" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub Project 2 -->
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3>インターン</h3>
+                        <span class="project-period">2025年5月 - 現在</span>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="project-overview">
+                            <h4><i class="fas fa-info-circle"></i> 概要</h4>
+                            <p>
+                                企業でのインターンシップに参加し，実践的な開発経験を積んでいます．
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub Project 3 -->
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3>自主制作</h3>
+                        <span class="project-period">2025年5月 - 9月</span>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="project-overview">
+                            <h4><i class="fas fa-info-circle"></i> 天気アプリ</h4>
+                            <p>
+                                位置情報の取得をし，位置情報から数時間後の天気予報の情報を表示．
+                            </p>
+                        </div>
+
+                        <div class="project-tech">
+                            <h4><i class="fas fa-code"></i> 技術スタック</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">React</span>
+                            </div>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://github.com/myuutan/weather" target="_blank" class="btn btn-outline">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://myu.life/" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-external-link-alt"></i> 天気アプリ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <p class="section-description">習得している技術スタック</p>
+
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> フロントエンド</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML/CSS</span>
+                                <span>50%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>50%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>React</span>
+                                <span>30%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>TypeScript</span>
+                                <span>50%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> バックエンド</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>C</span>
+                                <span>30%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> データベース</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>MySQL</span>
+                                <span>30%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> ツール・その他</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Git/GitHub</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Docker</span>
+                                <span>20%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>AWS</span>
+                                <span>20%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>MATLAB</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-description">これまでに取り組んだプロジェクト</p>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="nihon-university-logo.png" alt="大学院研究">
+                        <div class="project-overlay">
+                            <a href="https://cir.nii.ac.jp/crid/1520867611148456448" class="overlay-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>大学院研究</h3>
+                        <p>OFDM伝送へのPolar符号の適用に関する検討</p>
+                        <div class="project-tags">
+                            <span>MATLAB</span>
+                            <span>鉄道通信</span>
+                            <span>誤り訂正符号</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250" alt="天気アプリ">
+                        <div class="project-overlay">
+                            <a href="https://github.com/myuutan/weather" class="overlay-btn" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://myu.life/" class="overlay-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>天気アプリ</h3>
+                        <p>位置情報を取得し，数時間後の天気予報を表示するWebアプリケーション</p>
+                        <div class="project-tags">
+                            <span>TypeScript</span>
+                            <span>Next.js</span>
+                            <span>React</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-description">お気軽にお問い合わせください</p>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:csmi25011@g.nihon-u.ac.jp">csmi25011@g.nihon-u.ac.jp</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p><a href="https://github.com/myuutan" target="_blank">github.com/myuutan</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>日本大学大学院理工学研究科</p>
+                            <p>住所:〒274-0063 千葉県船橋市習志野台7丁目24-1</p>
+                            <div class="map-container" style="margin-top: 15px;">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12956.266491112581!2d140.0581088!3d35.72458!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022807e66f1ac3b%3A0xc0507f7f5ac0b0b2!2sNihon%20University%20College%20of%20Science%20%26%20Technology%20Funabashi%20Campus!5e0!3m2!1sen!2sjp!4v1765019585211!5m2!1sen!2sjp"
+                                    width="100%"
+                                    height="200"
+                                    style="border:0; border-radius: 8px;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="aad8107c-bb82-4acd-8cd1-b01842ca3012">
+                    <input type="hidden" name="subject" value="ポートフォリオからのお問い合わせ">
+                    <input type="hidden" name="redirect" value="https://myuutan.github.io/introduction/#contact">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Nozawa Miu. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/myuutan" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:csmi25011@g.nihon-u.ac.jp"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
